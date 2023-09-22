@@ -1,0 +1,1821 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Anton&family=Bangers&family=Bebas+Neue&family=Carlito:wght@700&family=Castoro+Titling&family=Cormorant+Garamond&family=Fjalla+One&family=Gilda+Display&family=Gloock&family=Goblin+One&family=Holtwood+One+SC&family=Inter&family=Kanit&family=Konkhmer+Sleokchher&family=Koulen&family=Lilita+One&family=Merriweather:ital@0;1&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;700&family=Oswald:wght@200;400&family=Permanent+Marker&family=Poppins:ital,wght@0,400;0,500;0,600;1,200;1,300&family=Rajdhani:wght@700&family=Righteous&family=Roboto+Condensed:ital@1&family=Roboto:wght@300&family=Ruda:wght@600&family=Rufina&family=Russo+One&family=Shrikhand&family=Slabo+27px&family=Squada+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+
+:root {
+  --text-color: #292929;
+  --color-bg: #f3fffe;
+  --primary-color: #0c0c0c;
+  --primary-color-variant: #3f3f3f;
+  --card-box-shadow: -30px 30px 30px rgba(0, 0, 0, 0.1);
+  --image-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  --card-transition: 0.5s ease;
+  --text-transition: 0.3s ease;
+  --button-color: #c1fff9;
+  --hover-color: #6b6b6b;
+  --card-color: #fff;
+
+  --container-width-lg: 76%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--color-bg);
+  padding-top: 80px;
+}
+/* ==========================NAV SECTION  ========================== */
+nav {
+  background: var(--primary-color);
+}
+
+.logo {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  bottom: 8px;
+}
+
+.logo img {
+  margin: 0 20px;
+  position: relative;
+  top: 10px;
+  cursor: default;
+}
+
+.navbar {
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 34px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999999;
+  transition: background-color 500ms;
+}
+
+.navbar.sticking {
+  background-color: #0283da;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  color: #fff;
+  font-size: 18px;
+  position: relative;
+  right: 10px;
+  transition: var(--text-transition);
+}
+
+.navbar ul li a:hover {
+  color: #0998f8;
+}
+.navbar input {
+  height: 30px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.navbar input:last-child {
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #0998f8;
+  color: #fff;
+}
+
+.search__input {
+  width: 250px;
+}
+
+.search__btn {
+  width: 70px;
+  position: relative;
+  right: 20px;
+  font-size: 13px;
+}
+
+.navbar input::placeholder {
+  position: relative;
+  left: 15px;
+}
+
+.hamburger {
+  display: block;
+  width: 35px;
+  cursor: pointer;
+  appearance: none;
+  background: none;
+  outline: none;
+  border: none;
+  position: relative;
+}
+
+.hamburger .bar, .hamburger::after, .hamburger::before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: var(--card-color);
+  margin: 6px 0px;
+  transition: 0.4s;
+}
+
+.hamburger.is-active::before{
+  transform: rotate(-45deg) translate(-9px, 8px);
+}
+
+.hamburger.is-active::after{
+  transform: rotate(45deg) translate(-4px, -5px);
+}
+
+.hamburger.is-active .bar{
+  opacity: 0;
+}
+
+.mobile-nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 98;
+  background-color: #0283da;
+  padding-top: 120px;
+  transition: 0.4s;
+}
+
+.mobile-nav.is-active {
+  left: 0;
+}
+
+.mobile-nav a {
+  display: block;
+  text-align: center;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background-color: #7BB8FC;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 16px;
+  color: #333;
+  font-weight: 400;
+  font-size: 18px;
+  transition: 0.5s ease;
+  border-radius: 8px;
+}
+
+.mobile-nav a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+@media screen and (min-width: 1200px) {
+  .hamburger {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+}
+/* ==========================END NAV SECTION  ========================== */
+
+/* ==========================HEADER SECTION  ========================== */
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 150px 380px;
+}
+
+#main-title h1 {
+  font-size: 70px;
+  animation-name: Slideinleft;
+  animation-duration: 0.5s;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+}
+
+@keyframes Slideinleft {
+    from {
+        transform: translateX(-300px);
+    }
+
+    to{
+        transform: translateX(0);
+    }
+}
+
+#main-title small {
+  font-size: 28px;
+}
+
+.card {
+  width: 500px;
+  height: 650px;
+  background: var(--card-color);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 20px;
+  position: relative;
+  left: 150px;
+  transition: transform 300ms;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card__image img {
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  box-shadow: var(--card-box-shadow);
+}
+
+.card__heading {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card__heading h4 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  margin-top: 40px;
+}
+
+.card__info p {
+  padding: 30px 120px;
+  font-weight: 400;
+  background: #ffffff;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 1;
+  text-align: center;
+}
+
+.card-link a {
+  margin-left: 350px;
+  position: relative;
+  bottom: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  transition: var(--text-transition);
+  background: #f5f4f4;
+  color: var(--text-color);
+}
+
+.card-link a:hover {
+  color: #0998f8;
+}
+
+/* ==========================END HEADER SECTION  ========================== */
+
+/* ==========================BOOKING INFO SECTION  ========================== */
+.booking__info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 150px 180px;
+}
+
+.book-info small {
+  font-size: 22px;
+  line-height: 1.4;
+  position: relative;
+  left: 150px;
+}
+/* ==========================BOOKING INFO SECTION  ========================== */
+
+/* ==========================BOOKING SECTION ================================= */
+.booking-container {
+  display: grid;
+}
+.booking-title h1 {
+  text-align: center;
+  margin-top: 120px;
+  font-size: 60px;
+}
+
+.booking__sub-title {
+  text-align: center;
+}
+
+.booking__sub-title small {
+  font-size: 30px;
+  position: relative;
+  top: 20px;
+}
+
+.booking-box {
+  width: 1300px;
+  height: 950px;
+  margin: 250px auto;
+  cursor: default;
+  box-shadow: var(--card-box-shadow);
+  background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+  border-radius: 20px;
+  position: relative;
+  bottom: 60px;
+}
+
+.line {
+  width: 100%;
+  height: 120px;
+  background: rgba(74, 74, 74);
+  margin: 0 auto;
+}
+
+.line h1 {
+  color: #fff;
+  position: relative;
+  top: 40px;
+  left: 50px;
+  font-size: 30px;
+}
+
+.booking-box input {
+  display: block;
+  margin: 40px;
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  position: relative;
+  top: 40px;
+  right: 10px;
+  background-color: #0998f8;
+  color: #fff;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.results-box ul{
+  /* border-top: 1px solid #c4c4c4; */
+  padding: 15px 10px;
+}
+
+.results-box ul li {
+  border-radius: 3px;
+  padding: 15px 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.results-box ul li:hover {
+  background-color: #0998f8;
+  color: #fff;
+}
+
+.results-box {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+#input-box {
+  width: 50%;
+}
+
+#input-box::placeholder {
+  color: #fff;
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+}
+
+#box {
+  height: 30px;
+  position: relative;
+  top: 20px;
+  left: 160px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.checkboxes {
+  display: flex;
+  position: relative;
+  bottom: 180px;
+  right: 100px;
+  margin: 10px;
+}
+
+.checkboxes small {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.booking-box button {
+  margin-left: 70%;
+  position: relative;
+  bottom: 238px;
+  left: 60px;
+  height: 40px;
+  width: 200px;
+  background-color: #e9e9e9;
+  color: #1f1f1f;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+  outline: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+
+.booking-box button:hover {
+  background: #fff;
+  color: #333;
+}
+
+.date {
+  font-size: 18px;
+  position: relative;
+  padding: 10px;
+}
+
+.search-box h6 {
+  margin: 60px;
+  position: relative;
+  left: 210px;
+  bottom: 220px;
+  font-weight: 400;
+}
+
+.booking-box h6 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  border-radius: 10px;
+  width: 10%;
+  padding: 5px 5px;
+}
+/* ==========================END BOOKING SECTION ================================= */
+
+/* ==========================SWIPERJS IMAGE SECTION ================================= */
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 550px;
+}
+
+.swiper-slide h1 {
+  font-size: 130px;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  color: #ffffffc5;
+}
+
+.swip {
+  width: 98%;
+  position: relative;
+  bottom: 100px;
+}
+/* ==========================END SWIPERJS IMAGE SECTION ================================= */
+
+/* ==========================INFO SECTION ================================= */
+.info-container {
+  display: grid;
+}
+
+#info-title {
+  text-align: left;
+  margin-top: 200px;
+  margin-left: 100px;
+}
+
+#info-title h1 {
+  font-size: 60px;
+  margin-left: 80px;
+}
+
+.info-boxes {
+ display: grid;
+ grid-template-rows: repeat(3, 1fr 1fr);
+ position: relative;
+ top: 150px;
+ background: linear-gradient(to bottom right, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+ padding: 30px 60px;
+ box-shadow: var(--card-box-shadow);
+ margin: 60px;
+ width: 90%;
+ transition: transform 300ms;
+}
+
+.info-boxes:hover {
+  transform: scale(1.1);
+}
+
+.info-boxes h5 {
+  font-size: 24px;
+  padding: 10px;
+  color: #fff;
+}
+
+.info-boxes p {
+  padding: 0 300px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.info-boxes small{
+  font-size: 16px;
+  color: #fff;
+}
+
+.info-boxes .btn {
+  width: 150px;
+  position: relative;
+  top: 40px;
+  border: none;
+  outline: none;
+  background-color: #0998f8;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+  right: 10px;
+}
+/* ==========================END INFO SECTION ================================= */
+
+/* ===============================HOTELS SECTION ============================= */
+.hotels-container {
+  display: flex;
+}
+
+.hotels-title {
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 350px;
+}
+
+.hotels-title h1 {
+  font-size: 80px;
+}
+
+.hotels-title p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  position: relative;
+  top: 20px;
+}
+
+.swipe {
+  position: relative;
+  top: 50px;
+  width: 95%;
+  border-radius: 10px;
+}
+
+.flexbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexbox-item {
+  width: 400px;
+  background-color: var(--card-color);
+  box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  margin: 30px;
+  position: relative;
+  top: 300px;
+  transition: transform 300ms ease;
+}
+
+.flexbox-item:hover {
+  transform: scale(1.1);
+}
+
+.flexbox-item-1 {
+  min-height: 400px;
+}
+
+.flexbox-item img {
+  width: 100%;
+}
+
+.flexbox-item a {
+  color: #333;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+  top: 30px;
+  left: 20px;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+
+.flexbox-item a:hover{
+  color: #0998f8;
+}
+
+.flexbox-item i {
+  font-size: 30px;
+  position: relative;
+  bottom: 30px;
+}
+
+.flexbox-item h1 {
+  margin: 10px 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.flexbox-item small{
+  font-size: 13px;
+  position: relative;
+  bottom: 15px;
+  left: 20px;
+}
+
+.hotel-container {
+  margin-top: 500px;
+  text-align: center;
+}
+
+.hotel-locator-title h1 {
+  font-size: 60px;
+}
+
+.hotel-locator-description p {
+  font-size: 20px;
+  margin-top: 25px;
+  font-weight: 500;
+}
+
+#google__maps iframe {
+  margin-top: 80px;
+  border-radius: 8px;
+}
+/* ===============================END HOTELS SECTION ============================= */
+
+/* ======================================LISTINGS SECTION ================================= */
+.listings-title h1 {
+  text-align: center;
+  margin-top: 150px;
+  font-size: 60px;
+}
+
+.listings-title p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 300px;
+}
+
+.card-listing {
+  height: 600px;
+  width: 600px;
+  background-color: #fff;
+  box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+  margin: 20px;
+  position: relative;
+  top: 150px;
+  left: 20px;
+  animation-name: slideinleftright;
+  animation-duration: 0.5s;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+}
+
+.card-listing img {
+  height: 100%;
+  width: 100%;
+  transition: transform 300ms ease;
+}
+
+.card-listing img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slideinleftright {
+  from{
+    transform: translateX(-350%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+/* ======================================END LISTINGS SECTION ================================= */
+
+/* ===========================================ABOUT US ============================================== */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+  gap: 150px;
+  padding: 50px;
+}
+
+.about-image img {
+  height: 500px;
+  border-radius: 50%;
+}
+
+#about-title h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.about-info p {
+  font-size: 18px;
+}
+/* ========================================END ABOUT US ============================================= */
+/* ========================================FOOTER SECTION  ============================================= */
+
+footer {
+  margin-top: 400px;
+  padding: 80px 13% 70px;
+  color: #fff;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  gap: 3.5rem;
+  background: var(--primary-color);
+}
+
+.footer-content h4 {
+  margin-bottom: 1.5rem;
+  font-size: 20px;
+}
+
+.footer-content li {
+  margin-bottom: 16px;
+}
+
+.footer-content li a {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  transition: 0.5s ease;
+}
+
+.footer-content li a:hover {
+  color: #0998f8;
+}
+/* ========================================END FOOTER SECTION  ============================================= */
+/* ================MEDIA QUERIES XL-SCREEN ============= */
+@media screen and (max-width: 1400px) {
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 150px 180px;
+    /* width: 100%; */
+  }
+  
+   
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    right: 30px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+
+  #main-title small {
+    font-size: 26px;
+    position: relative;
+    right: 30px;
+  }
+
+  .booking__info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 160px 10px;
+    margin: 10px;
+    position: relative;
+    right: 70px;
+  }
+
+  .book-info small {
+    font-size: 20px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+    position: relative;
+    left: 70px;
+    
+  }
+
+  .info-boxes {
+    position: relative;
+    right: 25px;
+  }
+
+  .booking-box {
+    position: relative;
+    left: 10px;
+  }
+
+  .swiper-slide h1 {
+    font-size: 90px;
+  }
+
+  .hotels-title {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 250px;
+  }
+
+  #google__maps iframe {
+    width: 95%;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 50px;
+  }
+  
+  .card-listing {
+    height: 550px;
+    width: 550px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    margin: 20px;
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+}
+/* ================END MEDIA QUERIES XL-SCREEN ============= */
+
+/* ================MEDIA QUERIES LARGE-SCREENS ============= */
+@media screen and (max-width: 1335px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 150px 160px;
+    /* width: 100%; */
+  }
+  
+   
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    right: 30px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+
+  #main-title small {
+    font-size: 24px;
+    position: relative;
+    right: 30px;
+  }
+
+  .booking__info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 160px 10px;
+    margin: 10px;
+    position: relative;
+    right: 70px;
+  }
+
+  .book-info small {
+    font-size: 19px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+    position: relative;
+    left: 70px;
+    
+  }
+}
+
+@media screen and (max-width: 1294px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 150px 155px;
+    /* width: 100%; */
+  }
+
+  .book-info small {
+    font-size: 19px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+    position: relative;
+    left: 90px;
+  }
+
+  .navbar ul li a{
+   display: none;
+  }
+
+  .navbar input {
+    display: none;
+  }
+}
+
+/* ====================MEDIA QUIERIES M/L SCREENS ============== */
+@media screen and (min-width: 900px) and (max-width: 1293px){
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    right: 10px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  #main-title small {
+    font-size: 24px;
+    position: relative;
+    right: 5px;
+  }
+
+  .card {
+    width: 500px;
+    height: 500px;
+    background: var(--card-color);
+    box-shadow: var(--card-box-shadow);
+    border-radius: 20px;
+    position: relative;
+    left: 150px;
+    transition: transform 300ms;
+  }
+
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 150px 100px;
+    position: relative;
+    right: 50px;
+    /* width: 100%; */
+  }
+
+  .book-info small {
+    font-size: 16px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+    position: relative;
+    right: 80px;
+  }
+
+  .booking__info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 160px 0px;
+    position: relative;
+  }
+
+  .booking-title h1 {
+    font-size: 50px;
+  }
+
+  .booking-box {
+    width: 1100px;
+    height: 950px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+  }
+
+  .swiper-slide h1 {
+    font-size: 80px;
+  }
+
+  .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+    left: 280px;
+    bottom: 80px;
+  }
+
+  .flexbox-item a {
+    color: #333;
+    font-weight: 500;
+    font-size: 18px;
+    transition: 0.5s ease;
+    padding: 80px;
+  }
+}
+
+/* ====================MEDIA QUIERIES M/L SCREENS ============== */
+@media screen and (min-width: 900px) and (max-width: 1174px){
+  #main-title h1 {
+    font-size: 60px;
+    position: relative;
+    right: 10px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  .book-info small {
+    font-size: 16px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+  }
+
+  .card {
+    width: 480px;
+    height: 480px;
+    background: var(--card-color);
+    box-shadow: var(--card-box-shadow);
+    border-radius: 20px;
+    position: relative;
+    left: 100px;
+    transition: transform 300ms;
+  }
+
+  .booking-box {
+    width: 1080px;
+    height: 950px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+  }
+
+  .card-listing {
+    height: 450px;
+    width: 450px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    margin: 5px;
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+
+  .hotels-title {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 150px;
+  }
+  
+  .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+  }
+
+  .flexbox-item h1 {
+    font-size: 28px;
+    font-weight: 500;
+  }
+}
+
+/* ====================MEDIA QUIERIES TABLET SCREENS ============== */
+@media screen and (min-width: 1024px) and (max-width: 1090px){
+
+  #main-title h1 {
+    font-size: 50px;
+    position: relative;
+    right: 10px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  #main-title small {
+    font-size: 20px;
+    position: relative;
+    right: 5px;
+  }
+
+  .booking-box {
+    width: 1000px;
+    height: 980px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+  }
+
+  .info-boxes {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr 1fr);
+    position: relative;
+    top: 150px;
+    background: linear-gradient(to bottom right, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    padding: 30px 30px;
+    box-shadow: var(--card-box-shadow);
+    margin: 60px;
+    height: 350px;
+    width: 90%;
+    transition: transform 300ms;
+    position: relative;
+    right: 60px;
+   }
+
+   .swiper-slide h1 {
+    font-size: 70px;
+  }
+
+  .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+    left: 240px;
+    bottom: 90px;
+  }
+
+  .flexbox-item h1 {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 2px;
+  }
+
+  #google__maps iframe {
+    width: 90%;
+    height: 500px;
+  }
+
+  .book-info small {
+    font-size: 16px;
+    background: #f8f8f82a;
+    line-height: 1.4;
+    position: relative;
+    right: 80px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1023px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    padding: 250px 380px;
+  }
+
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    right: 160px;
+    bottom: 80px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  #main-title small {
+    font-size: 20px;
+    position: relative;
+    right: 150px;
+    bottom: 70px;
+  }
+
+  .card {
+    width: 480px;
+    height: 480px;
+    background: var(--card-color);
+    box-shadow: var(--card-box-shadow);
+    border-radius: 20px;
+    position: relative;
+    left: 200px;
+    transition: transform 300ms;
+  }
+
+  .book-info small {
+    font-size: 16px;
+    background: #f8f8f82a;
+    position: relative;
+    top: 350px;
+  }
+
+  .booking-title h1 {
+    font-size: 45px;
+  }
+
+  .booking-box {
+    width: 930px;
+    height: 980px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+  }
+
+  .info-boxes {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr 1fr);
+    position: relative;
+    top: 150px;
+    background: linear-gradient(to bottom right, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    padding: 30px 30px;
+    box-shadow: var(--card-box-shadow);
+    margin: 60px;
+    height: 350px;
+    width: 90%;
+    transition: transform 300ms;
+    position: relative;
+    right: 60px;
+   }
+
+   .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+    left: 240px;
+    bottom: 90px;
+  }
+
+  .flexbox-item h1 {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 2px;
+  }
+
+  .card-listing {
+    height: 420px;
+    width: 420px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    margin: 10px;
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 899px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    padding: 250px 380px;
+  }
+
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    right: 160px;
+    bottom: 20px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  #main-title small {
+    font-size: 20px;
+    position: relative;
+    right: 140px;
+  }
+
+  .card {
+    width: 480px;
+    height: 480px;
+    background: var(--card-color);
+    box-shadow: var(--card-box-shadow);
+    border-radius: 20px;
+    position: relative;
+    left: 150px;
+    transition: transform 300ms;
+  }
+
+  .book-info small {
+    font-size: 16px;
+    background: #f8f8f82a;
+    position: relative;
+    top: 350px;
+  }
+
+  .booking-title h1 {
+    font-size: 45px;
+    position: relative;
+  }
+
+  .booking-box {
+    width: 830px;
+    height: 980px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+  }
+
+  .booking-box button {
+    margin-left: 60%;
+    position: relative;
+    bottom: 238px;
+    left: 60px;
+    height: 40px;
+    width: 200px;
+    background-color: #e9e9e9;
+    color: #1f1f1f;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    border-radius: 10px;
+  }
+
+  .swiper-slide h1 {
+    font-size: 60px;
+  }
+
+  .info-boxes {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr 1fr);
+    position: relative;
+    top: 150px;
+    background: linear-gradient(to bottom right, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    padding: 30px 30px;
+    box-shadow: var(--card-box-shadow);
+    margin: 60px;
+    height: 350px;
+    width: 90%;
+    transition: transform 300ms;
+    position: relative;
+    right: 100px;
+   }
+
+   .flexbox-container {
+    display: block;
+    position: relative;
+    left: 60px;
+  }
+
+  .flexbox-item {
+    width: 700px;
+    background-color: var(--card-color);
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    margin: 30px;
+    position: relative;
+    top: 300px;
+    transition: transform 300ms ease;
+  }
+  
+  .flexbox-item:hover {
+    transform: scale(1.1);
+  }
+  
+  .flexbox-item-1 {
+    min-height: 600px;
+  }
+
+  .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+    left: 280px;
+    bottom: 40px;
+  }
+
+  .flexbox-item h1 {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 2px;
+  }
+
+  .flexbox-item a {
+    color: #333;
+    font-weight: 500;
+    font-size: 22px;
+    transition: 0.5s ease;
+    position: relative;
+    left: 310px;
+    bottom: 20px;
+  }
+
+  .hotels-title {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 100px;
+  }
+
+  .about-container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    gap: 150px;
+    padding: 50px;
+  }
+
+  .about-info p {
+    font-size: 16px;
+    line-height: 1.8m;
+  }
+
+  .card-listing {
+    height: 360px;
+    width: 360px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    margin: 10px;
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    margin-top: 150px;
+    /* padding: 250px 380px; */
+  }
+
+  #main-title h1 {
+    font-size: 70px;
+    position: relative;
+    bottom: 80px;
+    left: 300px;
+    animation-name: Slideinleft;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  } 
+
+  #main-title small {
+    font-size: 20px;
+    position: relative;
+    bottom: 70px;
+    left: 320px;
+  }
+
+  .card {
+    width: 675px;
+    height: 775px;
+    background: var(--card-color);
+    box-shadow: var(--card-box-shadow);
+    border-radius: 20px;
+    position: relative;
+    left: 300px;
+    top: 150px;
+    transition: transform 300ms;
+  }
+
+  .book-info small {
+    display: none;
+  }
+
+  .booking-title h1 {
+    font-size: 26px;
+    position: relative;
+    left: 30px;
+  }
+
+
+  .booking-box {
+    width: 850px;
+    height: 980px;
+    margin: 250px auto;
+    cursor: default;
+    box-shadow: var(--card-box-shadow);
+    background: linear-gradient(to bottom left, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    border-radius: 20px;
+    position: relative;
+    bottom: 60px;
+    left: 50px;
+  }
+
+  .booking-box button {
+    margin-left: 73%;
+    position: relative;
+    bottom: 238px;
+    left: 60px;
+    height: 40px;
+    width: 130px;
+    background-color: #e9e9e9;
+    color: #1f1f1f;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    border-radius: 10px;
+  }
+
+  .swiper-slide h1 {
+    font-size: 60px;
+  }
+
+  .swip {
+    width: 1000px
+  }
+
+  .info-boxes {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr 1fr);
+    position: relative;
+    top: 150px;
+    background: linear-gradient(to bottom right, rgb(74, 74, 74) 50%, rgb(74, 160, 255) 50%);
+    padding: 30px 30px;
+    box-shadow: var(--card-box-shadow);
+    margin: 60px;
+    height: 350px;
+    width: 100%;
+    transition: transform 300ms;
+    position: relative;
+    right: 120px;
+   }
+
+   .hotels-title {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 40px;
+    gap: 20px;
+  }
+
+  .hotels-title h1 {
+    font-size: 40px;
+  }
+
+  .hotels-title p {
+    font-size: 18px;
+    position: relative;
+    left: 20px;
+  }
+
+   .flexbox-container {
+    display: block;
+    position: relative;
+    left: 50px;
+  }
+
+  .flexbox-item {
+    width: 380px;
+    background-color: var(--card-color);
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    margin: 30px;
+    position: relative;
+    top: 300px;
+    right: 60px;
+    transition: transform 300ms ease;
+  }
+  
+  .flexbox-item:hover {
+    transform: scale(1.1);
+  }
+  
+  .flexbox-item-1 {
+    min-height: 600px;
+  }
+
+  .flexbox-item i {
+    font-size: 30px;
+    position: relative;
+    left: 10px;
+    bottom: 40px;
+  }
+
+  .flexbox-item h1 {
+    font-size: 28px;
+    font-weight: 500;
+    padding: 2px;
+  }
+
+  .flexbox-item a {
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.5s ease;
+    position: relative;
+    left: 30px;
+    top: 230px;
+  }
+
+  .hotel-locator-title h1 {
+    font-size: 40px;
+  }
+
+  .about-container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    gap: 150px;
+    padding: 50px;
+  }
+
+  .about-info p {
+    font-size: 16px;
+    line-height: 1.8m;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+
+  .card-listing {
+    height: 360px;
+    width: 360px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    /* margin: 20px; */
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+
+  .card-container {
+    display: block;
+    position: relative;
+    right: 15px;
+  }
+
+  .checkboxes {
+    display: flex;
+    position: relative;
+    bottom: 100px;
+  }
+
+  #info-title h1 {
+    font-size: 60px;
+    position: relative;
+    right: 80px;
+  }
+
+  .booking__sub-title small {
+    font-size: 22px;
+  }
+
+  .booking-title h1 {
+    font-size: 50px;
+  }
+
+  footer {
+    margin-top: 400px;
+    padding: 80px 13% 70px;
+    color: #fff;
+    width: 250%;
+  }
+  
+  .footer {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto)); */
+    display: block;
+    gap: 5.5rem;
+    background: var(--primary-color);
+  }
+  
+  .footer-content h4 {
+    /* margin-bottom: 1.5rem; */
+    font-size: 20px;
+  }
+  
+  .footer-content li {
+    margin-bottom: 16px;
+  }
+  
+  .footer-content li a {
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.5s ease;
+  }
+  
+  .footer-content li a:hover {
+    color: #0998f8;
+  }
+
+  .card-listing {
+    height: 350px;
+    width: 350px;
+    background-color: #fff;
+    box-shadow: 0 30px 43px rgba(0,0,0,0.3);
+    margin: 20px; 
+    position: relative;
+    top: 150px;
+    animation-name: slideinleftright;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+  
+}
