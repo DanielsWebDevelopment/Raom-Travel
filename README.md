@@ -1,5 +1,5 @@
 # Welcome to Roam!
-#### Roam was developed for travel purposes located in Canada using HTML, CSS and Javascript along with SwiperJs
+### Roam was developed for travel purposes located in Canada using HTML, CSS and Javascript along with SwiperJs
 #### The goal for this project is to allow users to search for hotels around Canada, View Hotel listings and find a hotel that best suite their needs.
 
 ### Some of the feautres include but are not limited too,
